@@ -47,7 +47,7 @@ def reproject_interp(input_data, output_projection, shape_out=None, hdu_in=0,
         If ``input_data`` is a FITS file or an `~astropy.io.fits.HDUList`
         instance, specifies the HDU to use.
     order : int or str, optional
-        The order of the interpolation. This can be any of the 
+        The order of the interpolation. This can be any of the
         following strings:
 
             * 'nearest-neighbor'
@@ -88,7 +88,8 @@ def reproject_interp(input_data, output_projection, shape_out=None, hdu_in=0,
     if isinstance(order, six.string_types):
         order = ORDER[order]
 
-    if (wcs_in.is_celestial and wcs_in.naxis == 2) or independent_celestial_slices:
-        return _reproject_celestial(array_in, wcs_in, wcs_out, shape_out=shape_out, order=order)
-    else:
-        return _reproject_full(array_in, wcs_in, wcs_out, shape_out=shape_out, order=order)
+    # TODO: fix the celestial case
+    # if (wcs_in.is_celestial and wcs_in.naxis == 2) or independent_celestial_slices:
+    #     return _reproject_celestial(array_in, wcs_in, wcs_out, shape_out=shape_out, order=order)
+    # else:
+    return _reproject_full(array_in, wcs_in, wcs_out, shape_out=shape_out, order=order)
